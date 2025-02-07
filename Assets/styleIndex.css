@@ -1,0 +1,129 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("../Source/InicioERP.png");
+    background-size: auto;
+}
+
+.login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: #794cec1f;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+    border-radius: 10px;
+}
+
+.login-box h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+
+.login-box .user-box {
+    position: relative;
+}
+
+.login-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent !important;
+}
+
+.login-box .user-box label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.login-box .user-box input:focus~label,
+.login-box .user-box input:valid~label {
+    top: -20px;
+    left: 0;
+    color: #03e9f4;
+    font-size: 12px;
+}
+
+.redirect {
+    width: 100%;
+    padding: 10px;
+    background-color: #353292;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.redirect:hover {
+    background-color: #0295b9;
+    transform: scale(1.05);
+}
+
+.redirect:focus {
+    outline: none;
+}
+
+.redirect:active {
+    background-color: #0285a4;
+    transform: scale(0.98);
+}
+
+
+/*------------------------------------------------*/
+
+.error {
+    width: 320px;
+    padding: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    background: #EF665B;
+    /* Color visible */
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px -3px #111;
+    position: relative;
+    margin-top: 20px;
+    background-color: red !important;
+    /* Fuerza el color de fondo */
+}
+
+.error__title {
+    font-weight: 500;
+    font-size: 18px;
+    color: white;
+    padding: 10px;
+}
+
+.error__close {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 10px;
+}
+
+.error__close path {
+    fill: white;
+}
+
+.error__icon path {
+    fill: #ffffff;
+}

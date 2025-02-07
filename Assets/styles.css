@@ -1,0 +1,639 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+/*navegador*/
+
+.sidebar {
+    background: rgb(91, 88, 185);
+    background: linear-gradient(192deg, rgba(91, 88, 185, 1) 0%, rgba(10, 52, 111, 1) 100%);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    height: 100%;
+    position: fixed;
+    left: 0;
+}
+
+.sidebar-header {
+    text-align: center;
+    text-decoration: none;
+    padding: 20px 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-bottom: 1px solid #ffffff;
+}
+
+.sidebar-header img {
+    width: 200px;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    border-bottom: 1px solid #ffffff;
+}
+
+.nav-links a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #d9d9d91e;
+    border-radius: 50px;
+}
+
+.nav-links a.active {
+    background-color: rgb(91, 88, 185, 1)
+}
+
+.nav-ico {
+    width: 20px;
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+.sidebar-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 0;
+    border-top: 1px solid white;
+}
+
+.sidebar-footer button {
+    background-color: #1e2a4a;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+}
+
+.sidebar-footer button:hover {
+    background-color: rgb(91, 88, 185, 1);
+}
+
+#cerrarSesion:hover {
+    background-color: red;
+}
+
+
+/*Contenido principal*/
+
+#main-content {
+    margin-left: 300px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    width: calc(100% - 250px);
+    height: 100%;
+    overflow-y: auto;
+}
+
+#main-content h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #19233b;
+}
+
+#main-content p {
+    line-height: 1.6;
+    color: #555;
+}
+
+
+/*Noticias*/
+
+
+/*noticiaPrincipal*/
+
+.noticias {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    border-radius: 25px;
+    background: rgb(90, 87, 184);
+    background: linear-gradient(135deg, rgba(90, 87, 184, 1) 28%, rgba(12, 52, 112, 1) 88%);
+    align-items: center;
+    margin-top: 20px;
+}
+
+.noticias .textoNoticia {
+    color: white !important;
+    padding-left: 50px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.noticias .textoNoticia h1,
+.noticias .textoNoticia p {
+    color: #f8f9fa !important;
+}
+
+.imagenNoticia img {
+    width: 100%;
+    height: auto;
+    border-radius: 25px !important;
+    display: flex;
+    justify-content: center;
+}
+
+.imagenNoticia {
+    padding: 20px;
+}
+
+
+/*noticiaSecundaria*/
+
+.ultimasNoticias {
+    margin-top: 100px;
+}
+
+.noticias2 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    border-radius: 25px;
+    background-color: #686695;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.noticias2 .textoNoticia2 {
+    color: white !important;
+    padding-left: 50px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.noticias2 .textoNoticia2 h1,
+.noticias2 .textoNoticia2 p {
+    color: #f8f9fa !important;
+}
+
+.imagenNoticia2 img {
+    width: 100%;
+    height: auto;
+    border-radius: 25px !important;
+    display: flex;
+    justify-content: center;
+}
+
+.imagenNoticia2 {
+    padding: 20px;
+}
+
+
+/*Tabls*/
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+
+/*Tabs*/
+
+.radio-inputs {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 0.5rem;
+    background-color: #EEE;
+    box-sizing: border-box;
+    box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+    padding: 0.25rem;
+    width: 300px;
+    font-size: 14px;
+}
+
+.radio-inputs .radio {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+.radio-inputs .radio input {
+    display: none;
+}
+
+.radio-inputs .radio .name {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    border: none;
+    padding: .5rem 0;
+    color: rgba(51, 65, 85, 1);
+    transition: all .15s ease-in-out;
+}
+
+.radio-inputs .radio input:checked+.name {
+    background-color: #fff;
+    font-weight: 600;
+}
+
+
+/*Boton añadir*/
+
+.Btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 45px;
+    height: 45px;
+    border-radius: calc(45px/2);
+    border: none;
+    cursor: pointer;
+    margin-top: 10em;
+    margin-left: auto;
+    margin-right: 3em;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background: rgb(90, 87, 184);
+    background: linear-gradient(135deg, rgba(90, 87, 184, 1) 28%, rgba(12, 52, 112, 1) 88%);
+}
+
+
+/* plus sign */
+
+.sign {
+    width: 100%;
+    font-size: 2.2em;
+    color: white;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* text */
+
+.text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    font-size: 1.4em;
+    font-weight: 500;
+    transition-duration: .3s;
+}
+
+
+/* hover effect on button width */
+
+.Btn:hover {
+    width: 125px;
+    transition-duration: .3s;
+}
+
+.Btn:hover .sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 5px;
+}
+
+
+/* hover effect button's text */
+
+.Btn:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+}
+
+
+/* button click effect*/
+
+.Btn:active {
+    transform: translate(2px, 2px);
+}
+
+/*boton editar*/
+.btnEditar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(20, 20, 20);
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+    cursor: pointer;
+    transition-duration: 0.3s;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none !important;
+}
+
+.btnEditar svg {
+    width: 17px;
+    transition-duration: 0.3s;
+}
+
+.btnEditar svg path {
+    fill: white;
+}
+
+.btnEditar:hover {
+    width: 100px; /* Reducido el tamaño del botón */
+    height: 35px; /* Ajustado la altura */
+    border-radius: 30px; /* Un borde más suave */
+    transition-duration: 0.3s;
+    background-color: rgb(4, 143, 39);
+    align-items: center;
+}
+
+.btnEditar:hover svg {
+    width: 14px;  /* Reducido el tamaño del icono */
+    transition-duration: 0.3s;
+    transform: translateY(60%);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
+.btnEditar::before {
+    display: none;
+    content: "Edit";
+    color: white;
+    transition-duration: 0.3s;
+    font-size: 2px;
+}
+
+.btnEditar:hover::before {
+    display: block;
+    padding-right: 10px;
+    font-size: 13px; /* Tamaño de texto más pequeño */
+    opacity: 1;
+    content: "Editar";  /* Cambio el texto a "Editar" */
+    transform: translateY(0px);
+    transition-duration: 0.3s;
+}
+/*boton Borrar*/
+.btnBorrar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(20, 20, 20);
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+    cursor: pointer;
+    transition-duration: 0.3s;
+    overflow: hidden;
+    position: relative;
+}
+
+.delete-svgIcon {
+    width: 15px;
+    transition-duration: 0.3s;
+}
+
+.delete-svgIcon path {
+    fill: white;
+}
+
+.btnBorrar:hover {
+    width: 90px;
+    border-radius: 50px;
+    transition-duration: 0.3s;
+    background-color: rgb(255, 69, 69);
+    align-items: center;
+}
+
+.btnBorrar:hover .delete-svgIcon {
+    width: 20px;
+    transition-duration: 0.3s;
+    transform: translateY(60%);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
+.btnBorrar::before {
+    display: none;
+    content: "Delete";
+    color: white;
+    transition-duration: 0.3s;
+    font-size: 2px;
+}
+
+.btnBorrar:hover::before {
+    display: block;
+    padding-right: 10px;
+    font-size: 13px;
+    opacity: 1;
+    transform: translateY(0px);
+    transition-duration: 0.3s;
+}
+
+/*Popup Formulario*/
+
+#mensaje {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    color: white;
+    display: none;
+    /* Se muestra solo cuando es necesario */
+}
+
+
+/* Contenedor principal del formulario emergente */
+
+.form-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    z-index: 1000;
+}
+
+
+/* Botón de cierre */
+
+.closeBtn {
+    background-color: #e74c3c;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    top: -15px;
+    /* Ajusta la posición superior */
+    right: -15px;
+    /* Ajusta la posición a la derecha */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 10;
+    /* Asegura que esté por encima del formulario */
+}
+
+.closeBtn:hover {
+    background-color: #c0392b;
+    transform: scale(1.1);
+    /* Pequeño efecto de agrandamiento al pasar el mouse */
+}
+
+
+/* Contenedor interno del formulario */
+
+.form-container {
+    position: relative;
+}
+
+
+/* Etiquetas del formulario */
+
+.form-container label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #34495e;
+}
+
+
+/* Campos de entrada */
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+    font-family: 'Arial', sans-serif;
+}
+
+.form-container input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 3px rgba(52, 152, 219, 0.5);
+}
+
+
+/* Mensaje */
+
+#mensaje {
+    display: none;
+    padding: 10px;
+    background-color: #2ecc71;
+    color: white;
+    border-radius: 5px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.save {
+    --color: #560bad;
+    font-family: inherit;
+    display: inline-block;
+    width: 8em;
+    height: 2.6em;
+    line-height: 2.5em;
+    margin: 20px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color 0.5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: var(--color);
+}
+
+.save:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+.save:hover {
+    color: #fff;
+}
+
+.save:before {
+    top: 100%;
+    left: 100%;
+    transition: all 0.7s;
+}
+
+.save:hover:before {
+    top: -30px;
+    left: -30px;
+}
+
+.save:active:before {
+    background: #3a0ca3;
+    transition: background 0s;
+}
