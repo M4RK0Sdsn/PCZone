@@ -36,7 +36,7 @@ if (isset($_SESSION['usuario'])) {
             </div>
         <?php endif; ?>
     <!-- Campo de búsqueda -->
-    <input type="text" id="searchInput" placeholder="Buscar productos..." onkeyup="buscarProductos()">
+    <input type="text" class="searchInputCompras" id="searchInput" placeholder="Buscar productos..." onkeyup="buscarProductos()">
                 
         <table id="productoTable">
             <thead id="productoHeader">
@@ -127,6 +127,6 @@ if (isset($_SESSION['usuario'])) {
     </div>
 
     <script src="Assets/motor.js"></script>
-    <script src="Assets/buscadorProducto.js"></script>
+    <script src="Assets/buscadorProductos.js"></script>
 </body>
 </html>

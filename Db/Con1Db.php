@@ -3,8 +3,8 @@ class Conex1 {
     // Conexión MySQL
     public static function con1() {
         $se = "localhost";
-        $us = "marcos";
-        $co = "madesani2005";
+        $us = "root";
+        $co = "";
         $bd = "pczone";  // Base de datos 
 
         $conn = new mysqli($se, $us, $co, $bd);

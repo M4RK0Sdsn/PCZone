@@ -3,53 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
 
     /*---------------*/
-    //Funcion para cargar compras
-    function cargarCompras() {
-        fetch('controllers/ComprasController.php') // Asegúrate de que la ruta es correcta
-            .then(response => response.json())
-            .then(data => {
-                console.log(data); // Ver los datos en la consola
-                if (data.columnas && data.datos) {
-                    crearTablaCompras(data.columnas, data.datos); // Crear la tabla con los datos de ventas
-                } else {
-                    console.error('No se recibieron datos de compras');
-                }
-            })
-            .catch(error => console.error('Error al obtener los datos de compras:', error));
-    }
-
-    // Función para crear la tabla con los datos de las ventas
-    function crearTablaCompras(columnas, datos) {
-        const tablaHead = document.getElementById('comprasHeader');
-        const tablaBody = document.getElementById('comprasTable').getElementsByTagName('tbody')[0];
-
-        // Limpiar la tabla antes de agregar nuevos datos
-        tablaHead.innerHTML = '';
-        tablaBody.innerHTML = '';
-
-        // Crear los encabezados de la tabla de ventas
-        columnas.forEach(columna => {
-            const th = document.createElement('th');
-            th.textContent = columna;
-            tablaHead.appendChild(th);
-        });
-
-        // Iterar sobre los datos y agregarlos a la tabla
-        datos.forEach(fila => {
-            const tr = document.createElement('tr');
-            columnas.forEach(columna => {
-                const td = document.createElement('td');
-                td.textContent = fila[columna];
-                tr.appendChild(td);
-            });
-            tablaBody.appendChild(tr);
-        });
-    }
-
-    // Cargar automáticamente la tabla de ventas al cargar la página
-    if (window.location.pathname.includes('compras.php')) {
-        cargarCompras(); // Solo carga los datos de ventas si estamos en la página de ventas
-    }
+    
 
     // Función para cargar almacenes
     function cargarAlmacen() {

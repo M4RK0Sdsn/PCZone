@@ -20,13 +20,17 @@ if (!isset($_SESSION['usuario'])) {
 
     <div id="main-content">
         <h1>Ventas</h1>
+
+        <!-- Campo de búsqueda -->
+        <input type="text" class="searchInputCompras" id="searchInputVentas" placeholder="Buscar ventas..." onkeyup="buscarVentas()">
+
         <table id="ventasTable">
             <thead id="ventasHeader">
                 <tr>
                     <!-- Encabezados generados dinámicamente -->
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="ventasBody">
                 <!-- Datos insertados mediante JavaScript -->
             </tbody>
         </table>
@@ -37,52 +41,64 @@ if (!isset($_SESSION['usuario'])) {
         </button>
 
         <!-- Formulario emergente para añadir ventas -->
-        <div id="formPopupVenta" class="form-popup" style="display: none;">
+        <div id="formPopupVenta" class="form-popup venta-form" style="display: none;">
             <div class="form-container">
                 <span class="closeBtn">&times;</span>
                 <form id="ventaForm" method="POST">
-                    <label for="cliente">Cliente:</label>
-                    <select id="cliente" name="cliente" required>
-                        <option value="">Seleccione un cliente</option>
-                    </select>
-
-                    <label for="empleado">Empleado:</label>
-                    <select id="empleado" name="empleado" required>
-                        <option value="">Seleccione un empleado</option>
-                    </select>
-
-                    <!-- Contenedor dinámico de productos -->
-                    <div id="productosContainer">
-                        <div class="producto-linea">
-                            <label for="producto[]">Producto:</label>
-                            <select name="producto[]" class="producto" required>
-                                <option value="">Seleccione un producto</option>
+                    <div class="form-sidebar">
+                        <div class="flex-inputs">
+                            <label for="cliente">Cliente:</label>
+                            <select id="cliente" name="cliente" required>
+                                <option value="">Seleccione un cliente</option>
                             </select>
 
-                            <label for="proveedor[]">Proveedor:</label>
-                            <input type="text" name="proveedor[]" class="proveedor" readonly>
+                            <label for="empleado">Empleado:</label>
+                            <select id="empleado" name="empleado" required>
+                                <option value="">Seleccione un empleado</option>
+                            </select>
+                        </div>
 
-                            <label for="precio[]">Precio:</label>
-                            <input type="text" name="precio[]" class="precio" readonly>
+                        <div id="productosContainer">
+                            <div class="producto-linea">
+                                <label for="producto[]">Producto:</label>
+                                <select name="producto[]" class="producto" required>
+                                    <option value="">Seleccione un producto</option>
+                                </select>
 
-                            <label for="cantidad[]">Cantidad:</label>
-                            <input type="number" name="cantidad[]" class="cantidad" min="1" required>
+                                <label for="proveedor[]">Proveedor:</label>
+                                <input type="text" name="proveedor[]" class="proveedor" readonly>
 
-                            <span class="subtotal">Subtotal: 0</span>
-                            <button type="button" class="remove-line">❌</button>
+                                <label for="precio[]">Precio:</label>
+                                <input type="text" name="precio[]" class="precio" readonly>
+
+                                <label for="cantidad[]">Cantidad:</label>
+                                <input type="number" name="cantidad[]" class="cantidad" min="1" required>
+
+                                <span class="subtotal">Subtotal: 0</span>
+                                <button type="button" class="remove-line">Borrar fila</button>
+                            </div>
+                        </div>
+
+                        <label for="formaPago">Forma de Pago:</label>
+                        <select id="formaPago" name="formaPago" required>
+                            <option value="">Seleccione una opción</option>
+                            <option value="Efectivo">Efectivo</option>
+                            <option value="Tarjeta">Tarjeta</option>
+                        </select>
+
+                        <button type="button" class="addLine" id="addLine">+ Añadir Línea</button>
+                        <div id="totalContainer">
+                            <span id="total">Total: 0.00</span>
                         </div>
                     </div>
 
-                    <button type="button" id="addLine">+ Añadir Línea</button>
-                    <div id="totalContainer">
-                        <span id="total">Total: 0.00</span>
-                    </div>
-                    <button type="submit" class="save">Guardar Venta</button>
+                    <button id="btnAñadir" type="submit" class="save">Guardar Venta</button>
                 </form>
             </div>
         </div>
     </div>
 
     <script src="Assets/ventas.js"></script>
+    <script src="Assets/buscadorVentas.js"></script>
 </body>
 </html>
