@@ -29,10 +29,28 @@ $idCompra = $_GET['id'];  // Obtener el ID de la compra de la URL
 
     <div id="main-content">
         <h1>Detalles de la Compra Nº<?php echo $idCompra; ?></h1>
+        
+        <h2>Información de la Compra</h2>
+        <table id="infoCompraTable">
+            <thead>
+                <tr>
+                    <th>ID Compra</th>
+                    <th>Fecha de Compra</th>
+                    <th>Forma de Pago</th>
+                    <th>Precio Total</th>
+                    <th>Empleado</th>
+                    <th>Número de Factura</th>
+                </tr>
+            </thead>
+            <tbody id="infoCompraBody">
+                <!-- La información de la compra se cargará aquí dinámicamente -->
+            </tbody>
+        </table>
+
+        <h2>Detalles de la Compra</h2>
         <table id="detallesCompraTable">
             <thead id="detallesCompraHeader">
                 <tr>
-                    <th>ID Compra</th>
                     <th>Línea Compra</th>
                     <th>Producto</th>
                     <th>Cantidad</th>

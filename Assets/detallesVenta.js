@@ -11,8 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             console.log("Detalles de la venta:", data);
             if (data.status === 'exito') {
-                // Ya no necesitamos 'columnas' porque las hemos definido en HTML
+                // Crear tabla de detalles de la venta
                 crearTablaDetallesVenta(data.detalles);
+                // Crear tabla de información de la venta
+                crearTablaInfoVenta(data.infoVenta);
             } else {
                 alert('No se encontraron detalles para esta venta');
             }
@@ -31,10 +33,7 @@ function crearTablaDetallesVenta(detalles) {
     detalles.forEach(fila => {
         const tr = document.createElement('tr');
         
-        // Añadir cada campo de fila como columna de la tabla
-        const tdIdVenta = document.createElement('td');
-        tdIdVenta.textContent = fila.idVenta;
-        tr.appendChild(tdIdVenta);
+       
 
         const tdLineaVenta = document.createElement('td');
         tdLineaVenta.textContent = fila.lineaVenta;
@@ -66,4 +65,39 @@ function crearTablaDetallesVenta(detalles) {
 
         tablaBody.appendChild(tr);  // Añadir la fila al cuerpo de la tabla
     });
+}
+
+function crearTablaInfoVenta(infoVenta) {
+    const tablaBody = document.getElementById('infoVentaBody');
+    
+    tablaBody.innerHTML = '';  // Limpiar antes de insertar nuevos datos
+
+    const tr = document.createElement('tr');
+    
+    // Añadir cada campo de infoVenta como columna de la tabla
+    const tdIdVenta = document.createElement('td');
+    tdIdVenta.textContent = infoVenta.idVenta;
+    tr.appendChild(tdIdVenta);
+
+    const tdFechaVenta = document.createElement('td');
+    tdFechaVenta.textContent = infoVenta.fechaVenta;
+    tr.appendChild(tdFechaVenta);
+
+    const tdFormaPago = document.createElement('td');
+    tdFormaPago.textContent = infoVenta.formaPago;
+    tr.appendChild(tdFormaPago);
+
+    const tdTotalVenta = document.createElement('td');
+    tdTotalVenta.textContent = infoVenta.totalVenta;
+    tr.appendChild(tdTotalVenta);
+
+    const tdCliente = document.createElement('td');
+    tdCliente.textContent = infoVenta.cliente;
+    tr.appendChild(tdCliente);
+
+    const tdEmpleado = document.createElement('td');
+    tdEmpleado.textContent = infoVenta.empleado;
+    tr.appendChild(tdEmpleado);
+
+    tablaBody.appendChild(tr);  // Añadir la fila al cuerpo de la tabla
 }

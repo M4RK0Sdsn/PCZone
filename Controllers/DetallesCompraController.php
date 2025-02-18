@@ -14,12 +14,14 @@ class DetallesCompraController {
 
             // Obtenemos los detalles de la compra
             $detalles = $detallesCompraModel->obtenerDetallesCompra($idCompra);
+            $infoCompra = $detallesCompraModel->obtenerInfoCompra($idCompra);
 
             // Devolvemos los resultados en formato JSON
-            if (!empty($detalles)) {
+            if (!empty($detalles) && !empty($infoCompra)) {
                 echo json_encode([
                     'status' => 'exito',
-                    'detalles' => $detalles
+                    'detalles' => $detalles,
+                    'infoCompra' => $infoCompra
                 ]);
             } else {
                 echo json_encode([

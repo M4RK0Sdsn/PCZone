@@ -11,8 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             console.log("Detalles de la compra:", data);
             if (data.status === 'exito') {
-                // Ya no necesitamos 'columnas' porque las hemos definido en HTML
+                // Crear tabla de detalles de la compra
                 crearTablaDetallesCompra(data.detalles);
+                // Crear tabla de información de la compra
+                crearTablaInfoCompra(data.infoCompra);
             } else {
                 alert('No se encontraron detalles para esta compra');
             }
@@ -23,6 +25,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 });
 
+function cargarCompras() {
+    fetch('controllers/ComprasController.php') // Asegúrate de que la ruta es correcta
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // Ver los datos en la consola
+            if (data.columnas && data.datos) {
+                crearTablaCompras(data.columnas, data.datos); // Crear la tabla con los datos de compras
+            } else {
+                console.error('No se recibieron datos de compras');
+            }
+        })
+        .catch(error => console.error('Error al obtener los datos de compras:', error));
+}
+
 function crearTablaDetallesCompra(detalles) {
     const tablaBody = document.getElementById('detallesCompraBody');
     
@@ -31,10 +47,7 @@ function crearTablaDetallesCompra(detalles) {
     detalles.forEach(fila => {
         const tr = document.createElement('tr');
         
-        // Añadir cada campo de fila como columna de la tabla
-        const tdIdCompra = document.createElement('td');
-        tdIdCompra.textContent = fila.idCompra;
-        tr.appendChild(tdIdCompra);
+        
 
         const tdLineaCompra = document.createElement('td');
         tdLineaCompra.textContent = fila.lineaCompra;
@@ -58,4 +71,39 @@ function crearTablaDetallesCompra(detalles) {
 
         tablaBody.appendChild(tr);  // Añadir la fila al cuerpo de la tabla
     });
+}
+
+function crearTablaInfoCompra(infoCompra) {
+    const tablaBody = document.getElementById('infoCompraBody');
+    
+    tablaBody.innerHTML = '';  // Limpiar antes de insertar nuevos datos
+
+    const tr = document.createElement('tr');
+    
+    // Añadir cada campo de infoCompra como columna de la tabla
+    const tdIdCompra = document.createElement('td');
+    tdIdCompra.textContent = infoCompra.idCompra;
+    tr.appendChild(tdIdCompra);
+
+    const tdFechaCompra = document.createElement('td');
+    tdFechaCompra.textContent = infoCompra.fechaCompra;
+    tr.appendChild(tdFechaCompra);
+
+    const tdFormaPago = document.createElement('td');
+    tdFormaPago.textContent = infoCompra.formaPago;
+    tr.appendChild(tdFormaPago);
+
+    const tdPrecioTotal = document.createElement('td');
+    tdPrecioTotal.textContent = infoCompra.precioTotal;
+    tr.appendChild(tdPrecioTotal);
+
+    const tdEmpleado = document.createElement('td');
+    tdEmpleado.textContent = infoCompra.empleado;
+    tr.appendChild(tdEmpleado);
+
+    const tdNumeroFactura = document.createElement('td');
+    tdNumeroFactura.textContent = infoCompra.numeroFactura;
+    tr.appendChild(tdNumeroFactura);
+
+    tablaBody.appendChild(tr);  // Añadir la fila al cuerpo de la tabla
 }

@@ -46,5 +46,46 @@ class DetallesCompraModel {
 
         return $detallesCompra;
     }
+
+    // Obtener la información adicional de la compra
+    public function obtenerInfoCompra($idCompra) {
+        $conn = Conex1::con1();
+
+        // Consulta SQL que obtiene la información adicional de la compra
+        $sql = "SELECT 
+                    c.idCompra, 
+                    c.fechaCompra, 
+                    c.formaPago, 
+                    c.precioTotal, 
+                    e.nombre AS empleado, 
+                    c.numeroFactura
+                FROM compras c
+                INNER JOIN empleados e ON c.idEmpleado = e.idEmpleado
+                WHERE c.idCompra = ?";
+
+        // Preparar la sentencia
+        $stmt = $conn->prepare($sql);
+        
+        if (!$stmt) {
+            // Si hay un error en la preparación de la consulta, lo capturamos
+            throw new Exception('Error en la consulta SQL: ' . $conn->error);
+        }
+
+        $stmt->bind_param("i", $idCompra); // Vinculamos el parámetro idCompra
+
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+
+        $infoCompra = [];
+
+        if ($resultado->num_rows > 0) {
+            $infoCompra = $resultado->fetch_assoc();  // Guardamos la fila
+        }
+
+        $stmt->close();
+        $conn->close();
+
+        return $infoCompra;
+    }
 }
 ?>

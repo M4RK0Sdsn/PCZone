@@ -14,6 +14,9 @@ function buscarCompras() {
             fila.style.display = "none"; // Ocultar si no coincide
         }
     });
+
+    // Asignar eventos a los botones de eliminar después de buscar
+    asignarEventosEliminar();
 }
 
 // Función para cargar compras desde el servidor
@@ -36,6 +39,20 @@ function cargarCompras() {
                 `;
                 tbody.appendChild(fila);
             });
+
+            // Asignar eventos a los botones de eliminar después de cargar
+            asignarEventosEliminar();
         })
         .catch(error => console.error("Error al cargar compras:", error));
+}
+
+// Función para asignar eventos a los botones de eliminar
+function asignarEventosEliminar() {
+    let botonesEliminar = document.querySelectorAll(".btn-eliminar");
+    botonesEliminar.forEach(boton => {
+        boton.addEventListener("click", function () {
+            let fila = this.closest("tr");
+            fila.remove();
+        });
+    });
 }

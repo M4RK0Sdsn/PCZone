@@ -40,5 +40,39 @@ class DetallesVentaModel {
 
         return $detallesVenta;
     }
+
+    // Obtener la información adicional de la venta
+    public function obtenerInfoVenta($idVenta) {
+        $conn = Conex1::con1();
+
+        // Consulta SQL que obtiene la información adicional de la venta
+        $sql = "SELECT 
+                    v.idVenta, 
+                    v.fechaVenta, 
+                    v.formaPago, 
+                    v.totalVenta, 
+                    c.nombre AS cliente, 
+                    e.nombre AS empleado
+                FROM ventas v
+                INNER JOIN clientes c ON v.idCliente = c.idCliente
+                INNER JOIN empleados e ON v.idEmpleado = e.idEmpleado
+                WHERE v.idVenta = ?";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $idVenta);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+
+        $infoVenta = [];
+
+        if ($resultado->num_rows > 0) {
+            $infoVenta = $resultado->fetch_assoc();  // Guardamos la fila
+        }
+
+        $stmt->close();
+        $conn->close();
+
+        return $infoVenta;
+    }
 }
 ?>

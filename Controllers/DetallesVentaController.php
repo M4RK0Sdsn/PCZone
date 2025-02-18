@@ -14,12 +14,14 @@ class DetallesVentaController {
 
             // Obtenemos los detalles de la venta
             $detalles = $detallesVentaModel->obtenerDetallesVenta($idVenta);
+            $infoVenta = $detallesVentaModel->obtenerInfoVenta($idVenta);
 
             // Devolvemos los resultados en formato JSON
-            if (!empty($detalles)) {
+            if (!empty($detalles) && !empty($infoVenta)) {
                 echo json_encode([
                     'status' => 'exito',
-                    'detalles' => $detalles
+                    'detalles' => $detalles,
+                    'infoVenta' => $infoVenta
                 ]);
             } else {
                 echo json_encode([
@@ -34,8 +36,6 @@ class DetallesVentaController {
             ]);
         }
     }
-
-   
 }
 
 // Instanciamos el controlador

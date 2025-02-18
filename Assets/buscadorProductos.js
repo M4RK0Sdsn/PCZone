@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-    cargarVentas();
 });
 
-function buscarVentas() {
-    let input = document.getElementById("searchInputVentas").value.toLowerCase();
-    let filas = document.querySelectorAll("#ventasBody tr");
+function buscarProductos() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let filas = document.querySelectorAll("#productoBody tr");
 
     filas.forEach(fila => {
         let textoFila = fila.textContent.toLowerCase();
@@ -16,28 +15,28 @@ function buscarVentas() {
     });
 }
 
-// Función para cargar ventas desde el servidor
-function cargarVentas() {
-    fetch("Controllers/VentaController.php?action=obtener")
+// Función para cargar productos desde el servidor
+function cargarProductos() {
+    fetch("Controllers/ProductoController.php?action=obtener")
         .then(response => response.json())
         .then(data => {
-            let tbody = document.getElementById("ventasBody");
-            tbody.innerHTML = ""; // Limpiar antes de agregar nuevas ventas
+            let tbody = document.getElementById("productoBody");
+            tbody.innerHTML = ""; // Limpiar antes de agregar nuevos productos
 
-            data.ventas.forEach(venta => {
+            data.productos.forEach(producto => {
                 let fila = document.createElement("tr");
                 fila.innerHTML = `
-                    <td>${venta.idVenta}</td>
-                    <td>${venta.fechaVenta}</td>
-                    <td>${venta.cantidad}</td>
-                    <td>${venta.formaPago}</td>
-                    <td>${venta.idCliente}</td>
-                    <td>${venta.idEmpleado}</td>
-                    <td>${venta.idAlmacen}</td>
-                    <td>${venta.totalVenta}</td>
+                    <td>${producto.idProducto}</td>
+                    <td>${producto.nombreProducto}</td>
+                    <td>${producto.marca}</td>
+                    <td>${producto.modelo}</td>
+                    <td>${producto.precioCompra}</td>
+                    <td>${producto.precioVenta}</td>
+                    <td>${producto.stock}</td>
+                    <td>${producto.idProveedor}</td>
                 `;
                 tbody.appendChild(fila);
             });
         })
-        .catch(error => console.error("Error al cargar ventas:", error));
+        .catch(error => console.error("Error al cargar productos:", error));
 }

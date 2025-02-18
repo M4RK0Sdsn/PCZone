@@ -29,10 +29,28 @@ $idVenta = $_GET['id'];  // Obtener el ID de la venta de la URL
 
     <div id="main-content">
         <h1>Detalles de la Venta Nº<?php echo $idVenta; ?></h1>
+        
+        <h2>Información de la Venta</h2>
+        <table id="infoVentaTable">
+            <thead>
+                <tr>
+                    <th>ID Venta</th>
+                    <th>Fecha de Venta</th>
+                    <th>Forma de Pago</th>
+                    <th>Total Venta</th>
+                    <th>Cliente</th>
+                    <th>Empleado</th>
+                </tr>
+            </thead>
+            <tbody id="infoVentaBody">
+                <!-- La información de la venta se cargará aquí dinámicamente -->
+            </tbody>
+        </table>
+
+        <h2>Detalles de la Venta</h2>
         <table id="detallesVentaTable">
             <thead id="detallesVentaHeader">
                 <tr>
-                    <th>ID Venta</th>
                     <th>Línea Venta</th>
                     <th>Producto</th>
                     <th>Inicio Garantía</th>
